@@ -1,1 +1,19 @@
-<p>add-task-component works!</p>
+<mat-card style="margin: 1rem; background-color: #f1f1f1; padding: 1rem">
+    <form [formGroup]="taskForm" style="display: flex; flex-direction: column;">
+        <mat-form-field appearance="outline">
+            <mat-label>
+                Nueva Tarea
+            </mat-label>
+            <input formControlName="task" matInput placeholder="Ej: Lavar los platos">
+            <!-- <mat-icon matSuffix>
+                sentiment_very_satisfied
+            </mat-icon> -->
+            <mat-hint>
+                Añadir nueva tarea
+            </mat-hint>
+        </mat-form-field>
+        <button (click)="addTask()" [disabled]="taskForm.invalid" mat-raised-button color="primary" style="margin-top: 1rem;">
+            Añadir
+        </button>
+    </form>
+</mat-card>

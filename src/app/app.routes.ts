@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { TaskListComponentComponent } from './components/task-list-component/task-list-component.component';
+import { SortingBodyComponent } from './components/sorting-body/sorting-body.component';
 
 export const routes: Routes = [
-    {path: '', component: TaskListComponentComponent}
+    {path: '', component: SortingBodyComponent}
 ];

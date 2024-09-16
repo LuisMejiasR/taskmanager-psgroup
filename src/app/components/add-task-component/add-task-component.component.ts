@@ -28,8 +28,8 @@ import { ITask } from '../../core/models/task';
   styleUrl: './add-task-component.component.css'
 })
 
-export class AddTaskComponentComponent implements OnChanges {
-  @Input() taskToEdit: ITask | null = null;
+export class AddTaskComponentComponent {
+  @Input() taskToEdit!: ITask;
   taskForm!: FormGroup;
   isEditing = false;
 
@@ -41,29 +41,20 @@ export class AddTaskComponentComponent implements OnChanges {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['taskToEdit'] && this.taskToEdit) {
-      this.isEditing = true;
-      this.taskForm.patchValue({ task: this.taskToEdit.description });
-    } else {
-      this.isEditing = false;
-    }
+  addTask() {
+    // Add new task
+    this.taskService.addTask({
+      description: this.taskForm.value.task,
+      done: false,
+      index: JSON.parse(localStorage.getItem('tasks') || '[]').length ?? 0
+    });
+    this.taskForm.reset();
   }
 
-  addTask() {
-    if (this.isEditing && this.taskToEdit) {
-      // Update existing task
-      const updatedTask = { ...this.taskToEdit, description: this.taskForm.value.task };
-      this.taskService.updateTask(updatedTask);
-    } else {
-      // Add new task
-      this.taskService.addTask({
-        description: this.taskForm.value.task,
-        done: false,
-        index: JSON.parse(localStorage.getItem('tasks') || '[]').length ?? 0
-      });
-    }
+  updateTask() {
+    // Update existing task
+    const updatedTask = { ...this.taskToEdit, description: this.taskForm.value.task};
+    this.taskService.updateTask(updatedTask);
     this.taskForm.reset();
-    this.isEditing = false;
   }
 }

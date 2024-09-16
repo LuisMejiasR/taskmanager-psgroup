@@ -24,6 +24,7 @@ export class SortingBodyComponent {
   tasks: ITask[] = [];
   inProgressTasks: ITask[] = [];
   doneTasks: ITask[] = [];
+  taskToEdit!: ITask;
 
   constructor(private taskService: TaskService) {
     this.taskService.tasks$.subscribe(tasks => this.tasks = tasks);
@@ -44,9 +45,6 @@ export class SortingBodyComponent {
 
   fetchTask(task: ITask) {
     this.taskService.fetchTask(task);
-  }
-
-  editTask(task: ITask) {
-    this.addTaskComponent.taskToEdit = task;
+    this.taskToEdit = task;
   }
 }

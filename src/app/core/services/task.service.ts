@@ -44,7 +44,7 @@ export class TaskService {
     const currentTasks = this.tasksSubject.value;
     const updatedTasks = currentTasks.map((t, i) => {
       if (i === task.index) {
-        return task;
+        return { done: false, description: task.description, index: task.index };
       }
       return t;
     });

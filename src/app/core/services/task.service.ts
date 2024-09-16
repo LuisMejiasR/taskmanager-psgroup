@@ -33,4 +33,22 @@ export class TaskService {
   updateTasks(tasks: ITask[]): void {
 	this.updateTasksInLocalStorage(tasks);
   }
+
+  fetchTask(task: ITask): void {
+  const input = document.getElementById("inputId") as HTMLInputElement;
+  input.value = task.description;
+  localStorage.setItem('isEditing', JSON.stringify(true));
+  }
+
+  updateTask(task: ITask): void {
+    const currentTasks = this.tasksSubject.value;
+    const updatedTasks = currentTasks.map((t, i) => {
+      if (i === task.index) {
+        return task;
+      }
+      return t;
+    });
+    this.updateTasksInLocalStorage(updatedTasks);
+    localStorage.setItem('isEditing', JSON.stringify(false));
+  }
 }

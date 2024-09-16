@@ -5,7 +5,7 @@
                 <app-add-task-component></app-add-task-component>
             </div>
         </div>
-        <div class="col-md-9" >
+        <div style="margin-left: 1rem;">
             <div cdkDropListGroup style="display: flex;">
                 <div class="col-md-4">
                     <!-- to do -->
@@ -21,7 +21,14 @@
                         >
                             <div class="example-box" *ngFor="let item of tasks" cdkDrag>
                                 {{item.description}}
-                                <button (click)="removeTask(item)">Eliminar</button>
+                                <div>
+                                    <button (click)="fetchTask(item)" style="margin-right: 0.5rem;">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                    <button (click)="removeTask(item)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -40,6 +47,11 @@
                         >
                             <div class="example-box" *ngFor="let item of inProgressTasks" cdkDrag>
                                 {{item.description}}
+                                <div>
+                                    <button (click)="fetchTask(item)" style="margin-right: 0.5rem;">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -58,6 +70,9 @@
                         >
                             <div class="example-box" *ngFor="let item of doneTasks" cdkDrag>
                                 {{item.description}}
+                                <div>
+                                    <mat-icon style="margin-right: 1rem;">check_circle</mat-icon>
+                                </div>
                             </div>
                         </div>
                     </div>

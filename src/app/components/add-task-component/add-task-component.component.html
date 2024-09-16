@@ -4,16 +4,16 @@
             <mat-label>
                 Nueva Tarea
             </mat-label>
-            <input formControlName="task" matInput placeholder="Ej: Lavar los platos">
-            <!-- <mat-icon matSuffix>
+            <input id="inputId" formControlName="task" matInput placeholder="Ej: Lavar los platos">
+            <mat-icon matSuffix>
                 sentiment_very_satisfied
-            </mat-icon> -->
+            </mat-icon>
             <mat-hint>
                 Añadir nueva tarea
             </mat-hint>
         </mat-form-field>
-        <button (click)="addTask()" [disabled]="taskForm.invalid" mat-raised-button color="primary" style="margin-top: 1rem;">
-            Añadir
-        </button>
+            <button (click)="addTask()" [disabled]="taskForm.invalid" mat-raised-button color="primary" style="margin-top: 1rem;">
+                {{isEditing ? 'Actualizar' : 'Añadir'}}
+            </button>
     </form>
 </mat-card>

@@ -2,7 +2,7 @@
     <div style="display: flex;">
         <div class="col-md-3" style="background-color: #303030; height: 90vh;">
             <div>
-                <app-add-task-component [taskToEdit]="taskToEdit"></app-add-task-component>
+                <app-add-task-component [taskToEdit]="taskToEdit" [isEditing]="isEditing" (taskUpdated)="onTaskUpdated()"></app-add-task-component>
             </div>
         </div>
         <div style="margin-left: 1rem;">
@@ -22,7 +22,7 @@
                             <div class="example-box" *ngFor="let item of tasks" cdkDrag>
                                 {{item.description}}
                                 <div>
-                                    <button (click)="fetchTask(item)" style="margin-right: 0.5rem;">
+                                    <button (click)="fetchTask(item); isEditing = true" style="margin-right: 0.5rem;">
                                         <mat-icon>edit</mat-icon>
                                     </button>
                                     <button (click)="removeTask(item)">

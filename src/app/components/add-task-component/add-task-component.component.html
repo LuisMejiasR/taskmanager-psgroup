@@ -12,14 +12,14 @@
                 Añadir nueva tarea
             </mat-hint>
         </mat-form-field>
-            <!-- @if (isEditing) { -->
+            @if (!isEditing) {
                 <button (click)="addTask()" [disabled]="taskForm.invalid" mat-raised-button color="primary" style="margin-top: 1rem;">
                     Añadir
                 </button>
-            <!-- } @else { -->
-                <button (click)="updateTask()" [disabled]="taskForm.invalid" mat-raised-button color="primary" style="margin-top: 1rem;">
+            } @else {
+                <button (click)="updateTask(); isEditing = false" [disabled]="taskForm.invalid" mat-raised-button color="primary" style="margin-top: 1rem;">
                     Actualizar
                 </button>
-            <!-- } -->
+            }
     </form>
 </mat-card>

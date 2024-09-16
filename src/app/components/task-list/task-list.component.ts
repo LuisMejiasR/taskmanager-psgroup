@@ -1,4 +1,3 @@
-
 import { Component, ViewChild } from '@angular/core';
 import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { ITask } from '../../core/models/task';
@@ -8,7 +7,7 @@ import { TaskService } from '../../core/services/task.service';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-sorting-body',
+  selector: 'app-task-list',
   standalone: true,
   imports: [
     AddTaskComponentComponent,
@@ -16,15 +15,15 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     MatIconModule
   ],
-  templateUrl: './sorting-body.component.html',
-  styleUrl: './sorting-body.component.css'
+  templateUrl: './task-list.component.html',
+  styleUrl: './task-list.component.css'
 })
-export class SortingBodyComponent {
-  @ViewChild(AddTaskComponentComponent) addTaskComponent!: AddTaskComponentComponent;
+export class TaskListComponent {
   tasks: ITask[] = [];
   inProgressTasks: ITask[] = [];
   doneTasks: ITask[] = [];
   taskToEdit!: ITask;
+  isEditing: boolean = false;
 
   constructor(private taskService: TaskService) {
     this.taskService.tasks$.subscribe(tasks => this.tasks = tasks);
@@ -39,11 +38,17 @@ export class SortingBodyComponent {
     this.taskService.updateTasks(this.tasks);
   }
 
+  onTaskUpdated(): void {
+    this.isEditing = false;
+    this.taskService.updateTasks(this.tasks);
+  }
+
   removeTask(task: ITask) {
     this.taskService.removeTask(task);
   }
 
   fetchTask(task: ITask) {
+    this.isEditing = true;
     this.taskService.fetchTask(task);
     this.taskToEdit = task;
   }

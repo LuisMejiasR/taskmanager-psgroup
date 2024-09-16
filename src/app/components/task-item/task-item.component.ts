@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-task-item-component',
   standalone: true,
   imports: [],
-  templateUrl: './task-item-component.component.html',
-  styleUrl: './task-item-component.component.css'
+  templateUrl: './task-item.component.html',
+  styleUrl: './task-item.component.css'
 })
 export class TaskItemComponentComponent {
 

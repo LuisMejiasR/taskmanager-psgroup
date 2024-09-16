@@ -1,4 +1,9 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -30,8 +35,9 @@ import { ITask } from '../../core/models/task';
 
 export class AddTaskComponentComponent {
   @Input() taskToEdit!: ITask;
+  @Input() isEditing!: boolean;
+  @Output() taskUpdated = new EventEmitter<void>();
   taskForm!: FormGroup;
-  isEditing = false;
 
   constructor(private fb: FormBuilder, private taskService: TaskService) { }
 
@@ -56,5 +62,7 @@ export class AddTaskComponentComponent {
     const updatedTask = { ...this.taskToEdit, description: this.taskForm.value.task};
     this.taskService.updateTask(updatedTask);
     this.taskForm.reset();
+    this.isEditing = false;
+    this.taskUpdated.emit();
   }
 }

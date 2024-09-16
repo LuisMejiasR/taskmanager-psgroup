@@ -1,27 +1,40 @@
 # TaskmanagerPsgroup
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.9.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 17.3.9.
 
-## Development server
+## Estructura del Proyecto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **src/app**: Contiene los componentes principales de la aplicación.
+- **src/assets**: Contiene los recursos estáticos.
+- **src/index.html**: Archivo HTML principal.
+- **src/main.ts**: Punto de entrada de la aplicación.
+- **.vscode/**: Configuraciones específicas de Visual Studio Code.
+- **angular.json**: Configuración del proyecto Angular.
+- **package.json**: Dependencias y scripts del proyecto.
+- **tsconfig*.json**: Configuraciones de TypeScript.
 
-## Code scaffolding
+## Instalación
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para instalar las dependencias del proyecto, ejecuta:
 
-## Build
+```sh
+npm install
+```
+## Ejecución de la Aplicación
+Para ejecutar el servidor de desarrollo, usa:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```sh
+ng serve
+```
 
-## Running unit tests
+Navega a http://localhost:4200/. La aplicación se recargará automáticamente si cambias alguno de los archivos fuente.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Ejecución de Pruebas Unitarias
+Para ejecutar las pruebas unitarias con Karma, usa:
 
-## Running end-to-end tests
+```sh
+npm test
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Ayuda Adicional
+Para obtener más ayuda sobre Angular CLI, usa ng help o visita la página de referencia de comandos de Angular CLI.

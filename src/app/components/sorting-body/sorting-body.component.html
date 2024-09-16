@@ -15,7 +15,7 @@
                             cdkDropList
                             #todoList="cdkDropList"
                             [cdkDropListData]="tasks"
-                            [cdkDropListConnectedTo]="[doneList, inProgressList]"
+                            [cdkDropListConnectedTo]="[doneList]"
                             class="example-list"
                             (cdkDropListDropped)="drop($event)"
                         >
@@ -34,29 +34,6 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <!-- in progress -->
-                    <div class="example-container">
-                        <h2>En progreso</h2>
-                        <div
-                            cdkDropList
-                            #inProgressList="cdkDropList"
-                            [cdkDropListData]="inProgressTasks"
-                            [cdkDropListConnectedTo]="[todoList, doneList]"
-                            class="example-list"
-                            (cdkDropListDropped)="drop($event)"
-                        >
-                            <div class="example-box" *ngFor="let item of inProgressTasks" cdkDrag>
-                                {{item.description}}
-                                <div>
-                                    <button (click)="fetchTask(item)" style="margin-right: 0.5rem;">
-                                        <mat-icon>edit</mat-icon>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
                     <!-- done -->
                     <div class="example-container">
                         <h2>Terminadas</h2>
@@ -64,7 +41,7 @@
                             cdkDropList
                             #doneList="cdkDropList"
                             [cdkDropListData]="doneTasks"
-                            [cdkDropListConnectedTo]="[todoList, inProgressList]"
+                            [cdkDropListConnectedTo]="[todoList]"
                             class="example-list"
                             (cdkDropListDropped)="drop($event)"
                         >
